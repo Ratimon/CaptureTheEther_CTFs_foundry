@@ -5,8 +5,15 @@ anvil-node:
 1-deploy-guessthenumber:
 	forge script DeployGuessTheNumberScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
+1-solve-guessthenumber:
+	forge script SolveGuessTheNumberScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
 1-unit:
-	forge test --match-path test/GuessTheNumber.t.sol -vvv
+	forge test --match-path test/1_GuessTheNumber.t.sol -vvv
+
+cast-isCompleted:
+	cast call 0x8464135c8f25da09e49bc8782676a84730c318bc \
+  	"isComplete()" \
 
 define local_network
 http://127.0.0.1:$1
