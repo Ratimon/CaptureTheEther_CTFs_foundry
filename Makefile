@@ -9,7 +9,7 @@ anvil-node:
 	forge script SolveGuessTheNumberScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
 1-unit:
-	forge test --match-path test/1_GuessTheNumber.t.sol -vvv
+	forge test --match-path test/lotteries/1_GuessTheNumber.t.sol -vvv
 
 cast-isCompleted:
 	cast call 0x8464135c8f25da09e49bc8782676a84730c318bc \

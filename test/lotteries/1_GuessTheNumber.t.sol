@@ -3,8 +3,8 @@ pragma solidity ^0.8.16;
 
 import {Test} from "@forge-std/Test.sol";
 
-import {DeployGuessTheNumberScript} from "@script/1_DeployGuessTheNumber.s.sol";
-import {GuessTheNumberChallenge} from "@main/1_GuessTheNumber.sol";
+import {DeployGuessTheNumberScript} from "@script/lotteries/1_DeployGuessTheNumber.s.sol";
+import {GuessTheNumberChallenge} from "@main/lotteries/1_GuessTheNumber.sol";
 
 interface IGuessTheNumber {
     function answer() external returns(uint8);
