@@ -9,7 +9,7 @@ contract GuessTheRandomNumberChallenge {
         answer = uint8(
             uint256(  
                 keccak256( abi.encodePacked(
-                    blockhash(block.number - 1),block.timestamp)
+                    blockhash(block.number - 1), block.timestamp)
                 )
             )
         );    

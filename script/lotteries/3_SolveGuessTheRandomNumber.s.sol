@@ -4,8 +4,9 @@ pragma solidity =0.8.19;
 import {Script} from "@forge-std/Script.sol";
 import {GuessTheRandomNumberChallenge} from "@main/lotteries/3_GuessTheRandomNumber.sol";
 
-contract DeployGuessTheRandomNumberScript is Script {
-    GuessTheRandomNumberChallenge  guesstherandomnumberChallenge;
+
+contract SolveGuessTheRandomNumberScript is Script {
+    GuessTheRandomNumberChallenge  guesstherandomnumberChallenge = GuessTheRandomNumberChallenge( payable(address(0x8464135c8F25Da09e49BC8782676a84730C318bC)) );
 
     function run() public {
         // uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
@@ -17,10 +18,22 @@ contract DeployGuessTheRandomNumberScript is Script {
 
         vm.startBroadcast(deployerPrivateKey);
 
-        // make sure to run it wheb block.number > 
-	    // anvil --chain-id 1337 --block-time 5
+        string[] memory inputs = new string[](4);
+        inputs[0] = "cast";
+        inputs[1] = "storage";
+        inputs[2] = "0x8464135c8f25da09e49bc8782676a84730c318bc";
+        inputs[3] = "0";
 
-        guesstherandomnumberChallenge = new GuessTheRandomNumberChallenge{value: 1 ether}();
+        bytes memory res = vm.ffi(inputs);
+        bytes32 output = abi.decode(res, (bytes32));  
+
+        uint8 answer = uint8(
+            uint256(  
+                output
+            )
+        ); 
+
+        guesstherandomnumberChallenge.guess{value: 1e18}(answer);
 
         vm.stopBroadcast();
     }

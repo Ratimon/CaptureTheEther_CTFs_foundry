@@ -1,6 +1,6 @@
 # spin node
-anvil-node:
-	anvil --chain-id 1337
+anvil-node-auto:
+	anvil --chain-id 1337 --block-time 5
 
 1-deploy-guessthenumber:
 	forge script DeployGuessTheNumberScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
@@ -11,8 +11,17 @@ anvil-node:
 1-unit:
 	forge test --match-path test/lotteries/1_GuessTheNumber.t.sol -vvv
 
+3-deploy-guesstherandomnumber:
+	forge script DeployGuessTheRandomNumberScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
+3-solve-guesstherandomnumber:
+	forge script SolveGuessTheRandomNumberScript --rpc-url $(call local_network,8545)  -vvvv --broadcast --ffi; \
+
 3-unit:
 	forge test --match-path test/lotteries/3_GuessTheRandomNumber.t.sol -vvv --ffi
+
+cast-storage:
+	cast storage 0x8464135c8f25da09e49bc8782676a84730c318bc 0 \
 
 
 cast-isCompleted:
