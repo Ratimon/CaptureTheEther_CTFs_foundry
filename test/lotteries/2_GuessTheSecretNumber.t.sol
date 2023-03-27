@@ -45,5 +45,4 @@ contract GuessTheSecretNumberTest is Test, DeployGuessTheSecretNumberScript {
         vm.stopPrank(  );
     }
 
-
 }

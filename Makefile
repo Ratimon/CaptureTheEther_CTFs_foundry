@@ -11,8 +11,11 @@ anvil-node-auto:
 1-unit:
 	forge test --match-path test/lotteries/1_GuessTheNumber.t.sol -vvv
 
-2-deploy-secretthenumber:
+2-deploy-guessthesecretnumber:
 	forge script DeployGuessTheSecretNumberScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
+2-solve-guessthesecretnumber:
+	forge script SolveGuessTheSecretRandomNumberScript --rpc-url $(call local_network,8545)  -vvvv --broadcast --ffi; \
 
 2-unit:
 	forge test --match-path test/lotteries/2_GuessTheSecretNumber.t.sol -vvv
