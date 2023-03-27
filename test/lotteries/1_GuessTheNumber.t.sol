@@ -1,14 +1,11 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.16;
+pragma solidity =0.8.19;
 
 import {Test} from "@forge-std/Test.sol";
 
 import {DeployGuessTheNumberScript} from "@script/lotteries/1_DeployGuessTheNumber.s.sol";
 import {GuessTheNumberChallenge} from "@main/lotteries/1_GuessTheNumber.sol";
 
-interface IGuessTheNumber {
-    function answer() external returns(uint8);
-}
 // contract GuessTheNumberTest is Test {
 
 //     GuessTheNumberChallenge guessthenumberChallenge;
