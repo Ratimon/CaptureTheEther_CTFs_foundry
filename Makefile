@@ -11,6 +11,9 @@ anvil-node-auto:
 1-unit:
 	forge test --match-path test/lotteries/1_GuessTheNumber.t.sol -vvv
 
+2-deploy-secretthenumber:
+	forge script DeployGuessTheSecretNumberScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
 3-deploy-guesstherandomnumber:
 	forge script DeployGuessTheRandomNumberScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
@@ -26,7 +29,7 @@ cast-storage:
 
 cast-isCompleted:
 	cast call 0x8464135c8f25da09e49bc8782676a84730c318bc \
-  	"isComplete()" \
+  	"isComplete()(bool)" \
 
 define local_network
 http://127.0.0.1:$1

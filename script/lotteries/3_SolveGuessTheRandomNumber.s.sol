@@ -14,9 +14,9 @@ contract SolveGuessTheRandomNumberScript is Script {
 
         // address is already funded with ETH
         string memory mnemonic ="test test test test test test test test test test test junk";
-        uint256 deployerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 1); //  address = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
+        uint256 attackerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 2); //  address = 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC
 
-        vm.startBroadcast(deployerPrivateKey);
+        vm.startBroadcast(attackerPrivateKey);
 
         string[] memory inputs = new string[](4);
         inputs[0] = "cast";
