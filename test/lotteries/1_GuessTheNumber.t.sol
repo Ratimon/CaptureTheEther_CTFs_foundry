@@ -15,17 +15,15 @@ interface IGuessTheNumber {
 
 contract GuessTheNumberTest is Test, DeployGuessTheNumberScript {
 
-    address public deployer;
+    string mnemonic ="test test test test test test test test test test test junk";
+    uint256 deployerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 1); //  address = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
+
+    address deployer = vm.addr(deployerPrivateKey);
     address public attacker = address(11);
 
     function setUp() public {
 
-        deployer = msg.sender;
-
-        vm.deal(deployer, 2 ether);
         vm.deal(attacker, 2 ether);
-
-        vm.label(deployer, "Deployer");
         vm.label(attacker, "Attacker");
 
         guessthenumberChallenge = new GuessTheNumberChallenge{value: 1 ether}();
@@ -36,15 +34,16 @@ contract GuessTheNumberTest is Test, DeployGuessTheNumberScript {
     function test_isSolved() public {
         vm.startPrank(attacker);
 
+        assertEq( guessthenumberChallenge.isComplete(), false);
+        assertEq( address(guessthenumberChallenge).balance, 1 ether);
         uint8 answer = uint8(
             uint256(  
                 vm.load(address(guessthenumberChallenge), 0)
             )
         );
-
         guessthenumberChallenge.guess{value: 1 ether}(answer);
-
         assertEq( guessthenumberChallenge.isComplete(), true);
+        assertEq( address(guessthenumberChallenge).balance, 0 ether);
        
         vm.stopPrank(  );
     }
