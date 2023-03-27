@@ -6,7 +6,7 @@ anvil-node-auto:
 	forge script DeployGuessTheNumberScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
 1-solve-guessthenumber:
-	forge script SolveGuessTheNumberScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+	forge script SolveGuessTheNumberScript --rpc-url $(call local_network,8545)  -vvvv --broadcast --ffi; \
 
 1-unit:
 	forge test --match-path test/lotteries/1_GuessTheNumber.t.sol -vvv

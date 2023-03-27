@@ -36,12 +36,13 @@ contract GuessTheNumberTest is Test, DeployGuessTheNumberScript {
     function test_isSolved() public {
         vm.startPrank(attacker);
 
-        // in case public variable
-        // uint8 guessNumber = IGuessTheNumber(address(guessthenumberChallenge)).answer();
-        // guessthenumberChallenge.guess{value: 1 ether}(guessNumber);
+        uint8 answer = uint8(
+            uint256(  
+                vm.load(address(guessthenumberChallenge), 0)
+            )
+        );
 
-        guessthenumberChallenge.guess{value: 1 ether}(42);
-
+        guessthenumberChallenge.guess{value: 1 ether}(answer);
 
         assertEq( guessthenumberChallenge.isComplete(), true);
        

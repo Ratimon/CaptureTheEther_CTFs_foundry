@@ -17,8 +17,6 @@ contract DeployGuessTheNumberScript is Script {
 
         vm.startBroadcast(deployerPrivateKey);
 
-        //  (new SomeTest){value:1 ether}();
-
         guessthenumberChallenge = new GuessTheNumberChallenge{value: 1 ether}();
 
         vm.stopBroadcast();
