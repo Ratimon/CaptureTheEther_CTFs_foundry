@@ -1,4 +1,7 @@
 # spin node
+anvil-node:
+	anvil --chain-id 1337
+
 anvil-node-auto:
 	anvil --chain-id 1337 --block-time 5
 
@@ -41,6 +44,9 @@ anvil-node-auto:
 5-deploy-predictthefuture:
 	forge script DeployPredictTheFutureScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
+5-solve-predictthefuture:
+	forge script SolvePredictTheFutureScript --rpc-url $(call local_network,8545)  -vvvv --broadcast \
+
 5-unit:
 	forge test --match-path test/lotteries/5_PredictTheFuture.t.sol -vvv --ffi
 
@@ -50,6 +56,9 @@ cast-storage:
 cast-isCompleted:
 	cast call 0x8464135c8f25da09e49bc8782676a84730c318bc \
   	"isComplete()(bool)" \
+
+cast-balance:
+	cast balance 0x8464135c8f25da09e49bc8782676a84730c318bc \
 
 define local_network
 http://127.0.0.1:$1

