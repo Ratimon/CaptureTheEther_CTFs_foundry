@@ -29,8 +29,14 @@ anvil-node-auto:
 3-unit:
 	forge test --match-path test/lotteries/3_GuessTheRandomNumber.t.sol -vvv --ffi
 
-3-deploy-guessthenewnumber:
+4-deploy-guessthenewnumber:
 	forge script DeployGuessTheNewNumberScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
+4-solve-guessthenewnumber:
+	forge script SolveGuessTheNewNumberScript --rpc-url $(call local_network,8545)  -vvvv --broadcast --ffi; \
+
+4-unit:
+	forge test --match-path test/lotteries/4_GuessTheNewNumber.t.sol -vvv --ffi
 
 cast-storage:
 	cast storage 0x8464135c8f25da09e49bc8782676a84730c318bc 0 \

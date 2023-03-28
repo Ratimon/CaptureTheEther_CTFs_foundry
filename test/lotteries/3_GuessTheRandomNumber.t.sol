@@ -6,10 +6,6 @@ import {Test} from "@forge-std/Test.sol";
 import {DeployGuessTheRandomNumberScript} from "@script/lotteries/3_DeployGuessTheRandomNumber.s.sol";
 import {GuessTheRandomNumberChallenge} from "@main/lotteries/3_GuessTheRandomNumber.sol";
 
-interface IGuessTheNumber {
-    function answer() external returns(uint8);
-}
-
 contract GuessTheRandomNumberTest is Test, DeployGuessTheRandomNumberScript {
 
     string mnemonic ="test test test test test test test test test test test junk";
@@ -19,7 +15,7 @@ contract GuessTheRandomNumberTest is Test, DeployGuessTheRandomNumberScript {
     address public attacker = address(11);
 
     function setUp() public {
-        vm.deal(attacker, 2 ether);
+        vm.deal(attacker, 1.5 ether);
         vm.label(attacker, "Attacker");
 
         guesstherandomnumberChallenge = new GuessTheRandomNumberChallenge{value: 1 ether}();
