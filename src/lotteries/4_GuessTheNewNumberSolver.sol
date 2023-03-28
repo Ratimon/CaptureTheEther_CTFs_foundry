@@ -30,7 +30,6 @@ contract GuessTheNewNumberSolver {
         );  
 
         challenge.guess{value: 1 ether}(answer);
-
         payable(owner).transfer(2 ether);
 
     }

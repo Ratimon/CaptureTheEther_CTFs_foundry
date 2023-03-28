@@ -38,6 +38,9 @@ anvil-node-auto:
 4-unit:
 	forge test --match-path test/lotteries/4_GuessTheNewNumber.t.sol -vvv --ffi
 
+5-deploy-predictthefuture:
+	forge script DeployPredictTheFutureScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
 cast-storage:
 	cast storage 0x8464135c8f25da09e49bc8782676a84730c318bc 0 \
 

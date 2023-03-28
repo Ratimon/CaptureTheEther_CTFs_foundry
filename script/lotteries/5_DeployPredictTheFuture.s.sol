@@ -2,10 +2,10 @@
 pragma solidity =0.8.19;
 
 import {Script} from "@forge-std/Script.sol";
-import {GuessTheNewNumberChallenge} from "@main/lotteries/4_GuessTheNewNumber.sol";
+import {PredictTheFutureChallenge} from "@main/lotteries/5_PredictTheFuture.sol";
 
-contract DeployGuessTheNewNumberScript is Script {
-    GuessTheNewNumberChallenge  guessthenewnumberChallenge;
+contract DeployPredictTheFutureScript is Script {
+    PredictTheFutureChallenge predictthefutureChallenge;
 
     function run() public {
         // uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
@@ -17,7 +17,7 @@ contract DeployGuessTheNewNumberScript is Script {
 
         vm.startBroadcast(deployerPrivateKey);
 
-        guessthenewnumberChallenge = new GuessTheNewNumberChallenge{value: 1 ether}();
+        predictthefutureChallenge = new PredictTheFutureChallenge{value: 1 ether}();
 
         vm.stopBroadcast();
     }
