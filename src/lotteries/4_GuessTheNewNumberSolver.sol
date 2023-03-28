@@ -12,7 +12,6 @@ contract GuessTheNewNumberSolver {
     IChallenge challenge;
     
     constructor(address _challenge) payable {
-        // require(msg.value == 1 ether);
         challenge = IChallenge(_challenge);
         owner = msg.sender;
     }
