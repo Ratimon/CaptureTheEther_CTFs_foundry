@@ -4,8 +4,8 @@ pragma solidity =0.8.19;
 import {Test} from "@forge-std/Test.sol";
 
 import {DeployGuessTheNewNumberScript} from "@script/lotteries/4_DeployGuessTheNewNumber.s.sol";
-import {GuessTheNewNumberChallenge} from "@main/lotteries/4_GuessTheNewNumber.sol";
-import {GuessTheNewNumberSolver} from "@main/lotteries/4_GuessTheNewNumberSolver.sol";
+import {GuessTheNewNumberChallenge} from "@main/lotteries/GuessTheNewNumber.sol";
+import {GuessTheNewNumberSolver} from "@main/lotteries/GuessTheNewNumberSolver.sol";
 
 
 contract GuessTheNewNumberTest is Test, DeployGuessTheNewNumberScript {

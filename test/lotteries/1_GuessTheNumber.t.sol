@@ -4,7 +4,7 @@ pragma solidity =0.8.19;
 import {Test} from "@forge-std/Test.sol";
 
 import {DeployGuessTheNumberScript} from "@script/lotteries/1_DeployGuessTheNumber.s.sol";
-import {GuessTheNumberChallenge} from "@main/lotteries/1_GuessTheNumber.sol";
+import {GuessTheNumberChallenge} from "@main/lotteries/GuessTheNumber.sol";
 
 // contract GuessTheNumberTest is Test {
 

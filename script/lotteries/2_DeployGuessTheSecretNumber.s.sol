@@ -2,7 +2,7 @@
 pragma solidity =0.8.19;
 
 import {Script} from "@forge-std/Script.sol";
-import {GuessTheSecretNumberChallenge} from "@main/lotteries/2_GuessTheSecretNumber.sol";
+import {GuessTheSecretNumberChallenge} from "@main/lotteries/GuessTheSecretNumber.sol";
 
 contract DeployGuessTheSecretNumberScript is Script {
     GuessTheSecretNumberChallenge  guessthesecretnumberChallenge = GuessTheSecretNumberChallenge( payable(address(0x8464135c8F25Da09e49BC8782676a84730C318bC)) );

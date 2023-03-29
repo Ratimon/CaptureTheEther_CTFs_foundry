@@ -5,7 +5,7 @@ import {Test} from "@forge-std/Test.sol";
 import {console} from "@forge-std/console.sol";
 
 import {DeployGuessTheSecretNumberScript} from "@script/lotteries/2_DeployGuessTheSecretNumber.s.sol";
-import {GuessTheSecretNumberChallenge} from "@main/lotteries/2_GuessTheSecretNumber.sol";
+import {GuessTheSecretNumberChallenge} from "@main/lotteries/GuessTheSecretNumber.sol";
 
 contract GuessTheSecretNumberTest is Test, DeployGuessTheSecretNumberScript {
 

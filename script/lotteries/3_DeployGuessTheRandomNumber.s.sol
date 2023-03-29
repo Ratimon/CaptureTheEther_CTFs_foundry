@@ -2,7 +2,7 @@
 pragma solidity =0.8.19;
 
 import {Script} from "@forge-std/Script.sol";
-import {GuessTheRandomNumberChallenge} from "@main/lotteries/3_GuessTheRandomNumber.sol";
+import {GuessTheRandomNumberChallenge} from "@main/lotteries/GuessTheRandomNumber.sol";
 
 contract DeployGuessTheRandomNumberScript is Script {
     GuessTheRandomNumberChallenge  guesstherandomnumberChallenge;

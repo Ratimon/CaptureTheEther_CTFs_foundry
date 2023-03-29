@@ -4,8 +4,8 @@ pragma solidity =0.8.19;
 import {Test} from "@forge-std/Test.sol";
 
 import {DeployPredictTheFutureScript} from "@script/lotteries/5_DeployPredictTheFuture.s.sol";
-import {PredictTheFutureChallenge} from "@main/lotteries/5_PredictTheFuture.sol";
-import {PredictTheFutureSolver} from "@main/lotteries/5_PredictTheFutureSolver.sol";
+import {PredictTheFutureChallenge} from "@main/lotteries/PredictTheFuture.sol";
+import {PredictTheFutureSolver} from "@main/lotteries/PredictTheFutureSolver.sol";
 
 contract PredictTheFutureTest is Test, DeployPredictTheFutureScript {
 

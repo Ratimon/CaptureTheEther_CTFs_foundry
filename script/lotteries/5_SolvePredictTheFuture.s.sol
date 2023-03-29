@@ -2,11 +2,11 @@
 pragma solidity =0.8.19;
 
 import {Script, console} from "@forge-std/Script.sol";
-import {PredictTheFutureChallenge} from "@main/lotteries/5_PredictTheFuture.sol";
-import {PredictTheFutureSolver} from "@main/lotteries/5_PredictTheFutureSolver.sol";
+import {PredictTheFutureChallenge} from "@main/lotteries/PredictTheFuture.sol";
+import {PredictTheFutureSolver} from "@main/lotteries/PredictTheFutureSolver.sol";
 
 contract SolvePredictTheFutureScript is Script {
-    PredictTheFutureChallenge  predictthefutureChallenge = PredictTheFutureChallenge( payable(address(0x8464135c8f25da09e49bc8782676a84730c318bc)) );
+    PredictTheFutureChallenge  predictthefutureChallenge = PredictTheFutureChallenge( payable(address(0x8464135c8F25Da09e49BC8782676a84730C318bC)) );
     PredictTheFutureSolver solver = PredictTheFutureSolver( payable(address(0x663F3ad617193148711d28f5334eE4Ed07016602)) );
     // PredictTheFutureSolver solver;
 
