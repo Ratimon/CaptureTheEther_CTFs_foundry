@@ -1,0 +1,29 @@
+[
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_challenge",
+          "type": "address"
+        },
+        {
+          "internalType": "uint8",
+          "name": "_guess",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "settleChallenge",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "receive"
+    }
+  ]

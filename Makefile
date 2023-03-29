@@ -45,6 +45,9 @@ anvil-node-auto:
 	forge script DeployPredictTheFutureScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
 5-solve-predictthefuture:
+	yarn hardhat run scripts-hardhat/5_SolvePredictTheFuture.ts
+
+5-solve-predictthefuture-manaul:
 	forge script SolvePredictTheFutureScript --rpc-url $(call local_network,8545)  -vvvv --broadcast \
 
 5-unit:
@@ -54,7 +57,7 @@ cast-storage:
 	cast storage 0x8464135c8f25da09e49bc8782676a84730c318bc 0 \
 
 cast-isCompleted:
-	cast call 0x8464135c8f25da09e49bc8782676a84730c318bc \
+	cast call 0x8464135c8F25Da09e49BC8782676a84730C318bC \
   	"isComplete()(bool)" \
 
 cast-balance:

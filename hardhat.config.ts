@@ -1,4 +1,5 @@
 import fs from "fs";
+import 'dotenv/config';
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "hardhat-preprocessor";
@@ -29,6 +30,8 @@ const config: HardhatUserConfig = {
     }
   ]
   },
+
+
 
   preprocess: {
     eachLine: (hre) => ({

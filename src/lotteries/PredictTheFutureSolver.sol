@@ -34,14 +34,7 @@ contract PredictTheFutureSolver {
 
         console.log('answer', answer);
         console.log('guess', guess);
-        // console.log('challenge',challenge);
-
         console.log('block.number', block.number);
-        // console.log('challenge.guesser()', address(challenge.guesser()));
-        // console.log( address(challenge.guesser()));
-
-
-        // if(answer != guess) return;
 
          if(answer == guess) {
             challenge.settle();
