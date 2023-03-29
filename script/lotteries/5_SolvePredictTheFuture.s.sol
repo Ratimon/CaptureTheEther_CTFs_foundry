@@ -8,7 +8,6 @@ import {PredictTheFutureSolver} from "@main/lotteries/5_PredictTheFutureSolver.s
 contract SolvePredictTheFutureScript is Script {
     PredictTheFutureChallenge  predictthefutureChallenge = PredictTheFutureChallenge( payable(address(0x8464135c8f25da09e49bc8782676a84730c318bc)) );
     PredictTheFutureSolver solver = PredictTheFutureSolver( payable(address(0x663F3ad617193148711d28f5334eE4Ed07016602)) );
-
     // PredictTheFutureSolver solver;
 
 
@@ -28,7 +27,6 @@ contract SolvePredictTheFutureScript is Script {
         solver.settleChallenge();
 
         console.log("is Solved? ", predictthefutureChallenge.isComplete());
-        console.log("attacker balance ", address(predictthefutureChallenge).balance );
 
         
         vm.stopBroadcast();

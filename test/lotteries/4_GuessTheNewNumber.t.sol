@@ -37,7 +37,7 @@ contract GuessTheNewNumberTest is Test, DeployGuessTheNewNumberScript {
         assertEq( guessthenewnumberChallenge.isComplete(), true);
         assertEq( address(guessthenewnumberChallenge).balance, 0 ether);
        
-        vm.stopPrank(  );
+        vm.stopPrank( );
     }
 
 }

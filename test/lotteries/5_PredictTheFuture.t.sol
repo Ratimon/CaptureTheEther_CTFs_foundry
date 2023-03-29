@@ -32,14 +32,8 @@ contract PredictTheFutureTest is Test, DeployPredictTheFutureScript {
 
         solver = new PredictTheFutureSolver{value: 1 ether}(address(predictthefutureChallenge), 7);
 
-        // for (uint8 i = 1; i < 11; i++) {
-        //     solver.settleChallenge();
-        //     vm.roll(block.number + 1);
-        // }
-
         while (!predictthefutureChallenge.isComplete()) {
              solver.settleChallenge();
-            //  solver.lockInGuessChallenge(7);
              vm.roll(block.number + 1);
         }
 
