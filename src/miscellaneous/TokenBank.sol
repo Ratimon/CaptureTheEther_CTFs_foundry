@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity =0.8.19;
 
+// import {console, Test} from "@forge-std/Test.sol";
+
 interface ITokenReceiver {
     function tokenFallback(address from, uint256 value, bytes calldata data) external;
 }
@@ -109,6 +111,16 @@ contract TokenBankChallenge {
         require(balanceOf[msg.sender] >= amount);
 
         require(token.transfer(msg.sender, amount));
-        balanceOf[msg.sender] -= amount;
+
+        // console.log('withdraw- sbalanceOf[msg.sender]');
+        // console.log(balanceOf[msg.sender]);
+
+        // noted: this is unchecked to disallow underflow, as this is not objective of the exercise
+
+        unchecked{ 
+            balanceOf[msg.sender] -= amount;
+         }
+
+        
     }
 }
