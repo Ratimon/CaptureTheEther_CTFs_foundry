@@ -9,8 +9,6 @@ import {DeployTokenBankScript} from "@script/miscellaneous/5_DeployTokenBank.s.s
 import { SimpleERC223Token, TokenBankChallenge} from "@main/miscellaneous/TokenBank.sol";
 import {TokenBankAttacker} from "@main/miscellaneous/TokenBankAttacker.sol";
 
-// import {GuessTheNewNumberSolver} from "@main/lotteries/GuessTheNewNumberSolver.sol";
-
 contract TokenBankTest is Test, DeployTokenBankScript {
 
     string mnemonic ="test test test test test test test test test test test junk";
@@ -40,22 +38,13 @@ contract TokenBankTest is Test, DeployTokenBankScript {
 
         assertEq( token.balanceOf(address(tokenbankChallenge)), 1000000 ether);
 
-        // `attacker` withdraw token from TokenBankChallenge
         tokenbankChallenge.withdraw(500000 ether);
 
         assertEq( tokenbankChallenge.balanceOf(attacker), 0 ether);
         assertEq( token.balanceOf(attacker), 500000 ether);
 
-
         tokenBankAttacker = new TokenBankAttacker(address(tokenbankChallenge), address(token)  );
-
-      
-        // `attacker` deposit to `TokenBankAttacker`
-        // `TokenBankAttacker` transfer to TokenBankChallenge
-        // `TokenBankAttacker` withdraw from TokenBankChallenge -> re-entrancy
-
         token.approve(address(tokenBankAttacker), type(uint256).max);
-
         tokenBankAttacker.attack();
 
         assertEq( tokenbankChallenge.isComplete(), true);
