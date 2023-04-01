@@ -62,6 +62,9 @@ anvil-node-auto:
 7-deploy-predicttheblockhash:
 	forge script DeployPredictTheBlockHashScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
+7-solve-predicttheblockhash:
+	yarn hardhat run scripts-hardhat/7_SolvePredictTheBlockhash.ts
+
 7-unit:
 	forge test --match-path test/lotteries/7_PredictTheBlockHash.t.sol -vvv --ffi
 
@@ -74,6 +77,9 @@ cast-isCompleted:
 
 cast-balance:
 	cast balance 0x8464135c8f25da09e49bc8782676a84730c318bc \
+
+generate-abi:
+	yarn hardhat run scripts-hardhat/abi-format.ts
 
 define local_network
 http://127.0.0.1:$1

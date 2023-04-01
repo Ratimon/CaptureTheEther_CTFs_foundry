@@ -20,14 +20,14 @@ const {
 } = utils;
 
 
-import jsonabi from "./abis/raw/PredictTheFutureSolver.json";
+import jsonabi from "./abis/raw/PredictTheBlockhash.json";
 
 async function main(): Promise<void> {
     // Hardhat always runs the compile task when running scripts through it.
     // If this runs in a standalone fashion you may want to call compile manually
     // to make sure everything is compiled
     // await run("compile");
-    const name = "PredictTheFutureSolver"
+    const name = "PredictTheBlockhashChallenge"
     const iface = new Interface(jsonabi);
 
     console.log('formatedAbi',iface.format(FormatTypes.full));

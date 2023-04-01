@@ -3,10 +3,6 @@ import chalk from 'chalk';
 import { ethers } from "hardhat";
 import { PredictTheFutureSolver, PredictTheFutureChallenge } from "../typechain"
 
-// async function chalk() {
-//   return (await import("chalk")).default;
-// }
-
 
 const MNEMONIC = 'test test test test test test test test test test test junk'
 const PATH = "m/44'/60'/0'/0/2"
@@ -56,7 +52,7 @@ async function main() {
     } else {
 
       let balance = await provider.getBalance("0x8464135c8F25Da09e49BC8782676a84730C318bC");
-      console.log(chalk.green(`Challeng solved !!! \n`))
+      console.log(chalk.green(`Challenge solved !!! \n`))
       console.log(chalk.green(` ETH balance \n`))
       console.log(chalk.green(balance))
     }
