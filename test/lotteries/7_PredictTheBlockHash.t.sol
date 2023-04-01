@@ -30,52 +30,11 @@ contract PredictTheBlockHashTest is Test, DeployPredictTheBlockHashScript {
         assertEq( predicttheblockhashChallenge.isComplete(), false);
         assertEq( address(predicttheblockhashChallenge).balance, 1 ether);
 
-        // vm.roll(block.number + 1);
-
-        // bytes32 oneguess = blockhash(0);
-        // bytes32 guess = blockhash(block.number );
-        // // bytes32 guess = 0x0000000000000000000000000000000000000000000000000000000000000000;
-
-        // console.log('oneguess');
-        // console.logBytes32(oneguess);
-
-        // console.log('guess1');
-        // console.logBytes32(guess);
-
-        // vm.roll(block.number + 256);
-
-        // bytes32 preguess = blockhash(1);
-        // bytes32 guess2 = blockhash(block.number + 1);
-
-
-        // console.log('preguess');
-        // console.logBytes32(preguess);
-
-        // console.log('guess2');
-        // console.logBytes32(guess2);
-
-        // ///////
-
-
-        // while (!predicttheblockhashChallenge.isComplete()) {
-
         uint256 initialBlock = block.number;
-
-            // bytes32 guess = blockhash(block.number + 1);
-        bytes32 guess3 = 0x0000000000000000000000000000000000000000000000000000000000000000;
-
-        predicttheblockhashChallenge.lockInGuess{value: 1 ether}(guess3);
-
+        bytes32 guess = 0x0000000000000000000000000000000000000000000000000000000000000000;
+        predicttheblockhashChallenge.lockInGuess{value: 1 ether}(guess);
         vm.roll(initialBlock + 1 + 257);
-
         predicttheblockhashChallenge.settle();
-
-            // console.log('preguess');
-            // console.logBytes32(preguess);
-
-            // vm.roll(block.number + 1);
-
-        // }
 
         assertEq( predicttheblockhashChallenge.isComplete(), true);
         assertEq( address(predicttheblockhashChallenge).balance, 0 ether);

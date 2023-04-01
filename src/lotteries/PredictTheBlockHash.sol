@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity =0.8.19;
 
-// import {Test, console} from "@forge-std/Test.sol";
-
 
 contract PredictTheBlockHashChallenge {
     address guesser;
@@ -31,9 +29,6 @@ contract PredictTheBlockHashChallenge {
         require(block.number > settlementBlockNumber);
 
         bytes32 answer = blockhash(settlementBlockNumber);
-
-        // console.log('answer');
-        // console.logBytes32(answer);
 
         guesser = address(0);
         if (guess == answer) {
