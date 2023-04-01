@@ -53,14 +53,17 @@ anvil-node-auto:
 5-unit:
 	forge test --match-path test/lotteries/5_PredictTheFuture.t.sol -vvv --ffi
 
-5-deploy-tokenbank:
+6-deploy-tokenbank:
 	forge script DeployTokenBankScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
 6-unit:
 	forge test --match-path test/miscellaneous/6_TokenBank.t.sol -vvv --ffi
 
-5-deploy-predicttheblockhash:
+7-deploy-predicttheblockhash:
 	forge script DeployPredictTheBlockHashScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
+7-unit:
+	forge test --match-path test/lotteries/7_PredictTheBlockHash.t.sol -vvv --ffi
 
 cast-storage:
 	cast storage 0x8464135c8f25da09e49bc8782676a84730c318bc 0 \

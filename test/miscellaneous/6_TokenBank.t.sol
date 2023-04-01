@@ -5,7 +5,7 @@ pragma solidity =0.8.19;
 
 import {Test} from "@forge-std/Test.sol";
 
-import {DeployTokenBankScript} from "@script/miscellaneous/5_DeployTokenBank.s.sol";
+import {DeployTokenBankScript} from "@script/miscellaneous/6_DeployTokenBank.s.sol";
 import { SimpleERC223Token, TokenBankChallenge} from "@main/miscellaneous/TokenBank.sol";
 import {TokenBankAttacker} from "@main/miscellaneous/TokenBankAttacker.sol";
 
