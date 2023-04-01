@@ -34,7 +34,6 @@ contract TokenBankAttacker {
 
     IChallenge challenge;
     IERC223Token token;
-    uint256 trackedAmount;
     
     constructor(address _challenge, address _token) payable {
         challenge = IChallenge(_challenge);
