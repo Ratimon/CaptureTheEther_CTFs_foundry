@@ -28,7 +28,6 @@ contract SolvePredictTheFutureScript is Script {
 
         console.log("is Solved? ", predictthefutureChallenge.isComplete());
 
-        
         vm.stopBroadcast();
     }
 }

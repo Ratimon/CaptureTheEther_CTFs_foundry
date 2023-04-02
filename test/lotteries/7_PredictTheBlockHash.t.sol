@@ -3,9 +3,8 @@ pragma solidity =0.8.19;
 
 import {Test, console} from "@forge-std/Test.sol";
 
-import {DeployPredictTheBlockHashScript} from "@script/lotteries/6_DeployPredictTheBlockHash.s.sol";
+import {DeployPredictTheBlockHashScript} from "@script/lotteries/7_DeployPredictTheBlockHash.s.sol";
 import {PredictTheBlockHashChallenge} from "@main/lotteries/PredictTheBlockHash.sol";
-// import {PredictTheBlockHashSolver} from "@main/lotteries/PredictTheFutureSolver.sol";
 
 contract PredictTheBlockHashTest is Test, DeployPredictTheBlockHashScript {
 
@@ -14,8 +13,6 @@ contract PredictTheBlockHashTest is Test, DeployPredictTheBlockHashScript {
 
     address deployer = vm.addr(deployerPrivateKey);
     address public attacker = address(11);
-
-    // PredictTheBlockHashSolver solver;
 
     function setUp() public {
         vm.deal(attacker, 1.5 ether);

@@ -68,6 +68,9 @@ anvil-node-auto:
 7-unit:
 	forge test --match-path test/lotteries/7_PredictTheBlockHash.t.sol -vvv --ffi
 
+7-deploy-retirementfund:
+	forge script DeployRetirementFundScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
+
 cast-storage:
 	cast storage 0x8464135c8f25da09e49bc8782676a84730c318bc 0 \
 
