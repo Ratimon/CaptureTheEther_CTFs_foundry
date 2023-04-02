@@ -18,7 +18,7 @@ contract TokenBankTest is Test, DeployTokenBankScript {
     // address public attacker = address(11);
 
     SimpleERC223Token token;
-    TokenBankAttacker tokenBankAttacker;
+    TokenBankAttacker tokenbankAttacker;
 
 
     function setUp() public {
@@ -43,9 +43,9 @@ contract TokenBankTest is Test, DeployTokenBankScript {
         assertEq( tokenbankChallenge.balanceOf(attacker), 0 ether);
         assertEq( token.balanceOf(attacker), 500000 ether);
 
-        tokenBankAttacker = new TokenBankAttacker(address(tokenbankChallenge), address(token)  );
-        token.approve(address(tokenBankAttacker), type(uint256).max);
-        tokenBankAttacker.attack();
+        tokenbankAttacker = new TokenBankAttacker(address(tokenbankChallenge), address(token)  );
+        token.approve(address(tokenbankAttacker), type(uint256).max);
+        tokenbankAttacker.attack();
 
         assertEq( tokenbankChallenge.isComplete(), true);
        
