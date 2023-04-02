@@ -71,6 +71,9 @@ anvil-node-auto:
 8-deploy-retirementfund:
 	forge script DeployRetirementFundScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
+8-solve-retirementfund:
+	forge script SolveGuessRetirementFundScript --rpc-url $(call local_network,8545)  -vvvv --broadcast \
+
 8-unit:
 	forge test --match-path test/math/8_RetirementFund.t.sol -vvv --ffi
 
