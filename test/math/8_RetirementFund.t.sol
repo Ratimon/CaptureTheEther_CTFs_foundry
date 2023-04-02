@@ -12,11 +12,8 @@ contract RetirementFundTest is Test, DeployRetirementFundScript {
 
     string mnemonic ="test test test test test test test test test test test junk";
 
-    // uint256 deployerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 1); //  address = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
     uint256 attackerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 2); //  address = 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC
-    // address deployer = vm.addr(deployerPrivateKey);
     address attacker = vm.addr(attackerPrivateKey);
-    // address public attacker = address(11);
 
     RetirementFundAttacker retirementfundAttacker;
 
@@ -27,7 +24,7 @@ contract RetirementFundTest is Test, DeployRetirementFundScript {
 
         retirementfundChallenge = new RetirementFundChallenge{value: 1 ether}(attacker);
         // comment out due to in-abillity to deploy with sent ether
-        // DeployGuessTheNumberScript.run();
+        // DeployRetirementFundScript.run();
     }
 
     function test_isSolved() public {
