@@ -6,13 +6,10 @@ import {Test} from "@forge-std/Test.sol";
 import {DeployGuessTheNumberScript} from "@script/lotteries/1_DeployGuessTheNumber.s.sol";
 import {GuessTheNumberChallenge} from "@main/lotteries/GuessTheNumber.sol";
 
-
 contract GuessTheNumberTest is Test, DeployGuessTheNumberScript {
-
     address public attacker = address(11);
 
     function setUp() public {
-
         vm.deal(attacker, 2 ether);
         vm.label(attacker, "Attacker");
 
@@ -24,19 +21,13 @@ contract GuessTheNumberTest is Test, DeployGuessTheNumberScript {
     function test_isSolved() public {
         vm.startPrank(attacker);
 
-        assertEq( guessthenumberChallenge.isComplete(), false);
-        assertEq( address(guessthenumberChallenge).balance, 1 ether);
-        uint8 answer = uint8(
-            uint256(  
-                vm.load(address(guessthenumberChallenge), 0)
-            )
-        );
+        assertEq(guessthenumberChallenge.isComplete(), false);
+        assertEq(address(guessthenumberChallenge).balance, 1 ether);
+        uint8 answer = uint8(uint256(vm.load(address(guessthenumberChallenge), 0)));
         guessthenumberChallenge.guess{value: 1 ether}(answer);
-        assertEq( guessthenumberChallenge.isComplete(), true);
-        assertEq( address(guessthenumberChallenge).balance, 0 ether);
-       
-        vm.stopPrank(  );
+        assertEq(guessthenumberChallenge.isComplete(), true);
+        assertEq(address(guessthenumberChallenge).balance, 0 ether);
+
+        vm.stopPrank();
     }
-
-
 }

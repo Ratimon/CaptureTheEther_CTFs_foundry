@@ -5,20 +5,20 @@ import {Script} from "@forge-std/Script.sol";
 import {GuessTheRandomNumberChallenge} from "@main/lotteries/GuessTheRandomNumber.sol";
 
 contract DeployGuessTheRandomNumberScript is Script {
-    GuessTheRandomNumberChallenge  guesstherandomnumberChallenge;
+    GuessTheRandomNumberChallenge guesstherandomnumberChallenge;
 
     function run() public {
         // uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
         // string memory mnemonic = vm.envString("MNEMONIC");
 
         // address is already funded with ETH
-        string memory mnemonic ="test test test test test test test test test test test junk";
+        string memory mnemonic = "test test test test test test test test test test test junk";
         uint256 deployerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 1); //  address = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
 
         vm.startBroadcast(deployerPrivateKey);
 
-        // make sure to run it wheb block.number > 
-	    // anvil --chain-id 1337 --block-time 5
+        // make sure to run it wheb block.number >
+        // anvil --chain-id 1337 --block-time 5
 
         guesstherandomnumberChallenge = new GuessTheRandomNumberChallenge{value: 1 ether}();
 

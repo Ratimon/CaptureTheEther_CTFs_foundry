@@ -7,7 +7,6 @@ import {DeployGuessTheRandomNumberScript} from "@script/lotteries/3_DeployGuessT
 import {GuessTheRandomNumberChallenge} from "@main/lotteries/GuessTheRandomNumber.sol";
 
 contract GuessTheRandomNumberTest is Test, DeployGuessTheRandomNumberScript {
-
     address public attacker = address(11);
 
     function setUp() public {
@@ -26,25 +25,20 @@ contract GuessTheRandomNumberTest is Test, DeployGuessTheRandomNumberScript {
         // inputs[3] = "0";
 
         // bytes memory res = vm.ffi(inputs);
-        // bytes32 output = abi.decode(res, (bytes32));  
+        // bytes32 output = abi.decode(res, (bytes32));
 
         // uint8 answer = uint8(
-        //     uint256(  
+        //     uint256(
         //         output
         //     )
-        // ); 
-        assertEq( guesstherandomnumberChallenge.isComplete(), false);
-        assertEq( address(guesstherandomnumberChallenge).balance, 1 ether);
-        uint8 answer = uint8(
-            uint256(  
-                vm.load(address(guesstherandomnumberChallenge), 0)
-            )
-        );
+        // );
+        assertEq(guesstherandomnumberChallenge.isComplete(), false);
+        assertEq(address(guesstherandomnumberChallenge).balance, 1 ether);
+        uint8 answer = uint8(uint256(vm.load(address(guesstherandomnumberChallenge), 0)));
         guesstherandomnumberChallenge.guess{value: 1 ether}(answer);
-        assertEq( guesstherandomnumberChallenge.isComplete(), true);
-        assertEq( address(guesstherandomnumberChallenge).balance, 0 ether);
-       
-        vm.stopPrank(  );
-    }
+        assertEq(guesstherandomnumberChallenge.isComplete(), true);
+        assertEq(address(guesstherandomnumberChallenge).balance, 0 ether);
 
+        vm.stopPrank();
+    }
 }

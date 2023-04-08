@@ -1,13 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity =0.8.19;
 
-
 contract PredictTheBlockHashChallenge {
     address guesser;
     bytes32 guess;
     uint256 settlementBlockNumber;
 
-    constructor () payable {
+    constructor() payable {
         require(msg.value == 1 ether);
     }
 

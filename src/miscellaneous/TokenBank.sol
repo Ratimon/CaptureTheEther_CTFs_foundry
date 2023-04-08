@@ -7,7 +7,7 @@ interface ITokenReceiver {
 
 contract SimpleERC223Token {
     // Track how many tokens are owned by each address.
-    mapping (address => uint256) public balanceOf;
+    mapping(address => uint256) public balanceOf;
 
     string public name = "Simple ERC223 Token";
     string public symbol = "SET";
@@ -23,7 +23,7 @@ contract SimpleERC223Token {
     }
 
     function isContract(address _addr) private view returns (bool is_contract) {
-        uint length;
+        uint256 length;
         assembly {
             //retrieve the size of the code on target address, this needs assembly
             length := extcodesize(_addr)
@@ -37,7 +37,7 @@ contract SimpleERC223Token {
     }
 
     function transfer(address to, uint256 value, bytes memory data) public returns (bool) {
-        return _transfer(to,value, data);
+        return _transfer(to, value, data);
     }
 
     function _transfer(address to, uint256 value, bytes memory data) internal returns (bool) {
@@ -57,19 +57,13 @@ contract SimpleERC223Token {
 
     mapping(address => mapping(address => uint256)) public allowance;
 
-    function approve(address spender, uint256 value)
-        public
-        returns (bool success)
-    {
+    function approve(address spender, uint256 value) public returns (bool success) {
         allowance[msg.sender][spender] = value;
         emit Approval(msg.sender, spender, value);
         return true;
     }
 
-    function transferFrom(address from, address to, uint256 value)
-        public
-        returns (bool success)
-    {
+    function transferFrom(address from, address to, uint256 value) public returns (bool success) {
         require(value <= balanceOf[from]);
         require(value <= allowance[from][msg.sender]);
 
@@ -90,8 +84,8 @@ contract TokenBankChallenge {
 
         // Divide up the 1,000,000 tokens, which are all initially assigned to
         // the token contract's creator (this contract).
-        balanceOf[msg.sender] = 500000 * 10**18;  // half for me
-        balanceOf[player] = 500000 * 10**18;      // half for you
+        balanceOf[msg.sender] = 500000 * 10 ** 18; // half for me
+        balanceOf[player] = 500000 * 10 ** 18; // half for you
     }
 
     function isComplete() public view returns (bool) {
@@ -111,10 +105,8 @@ contract TokenBankChallenge {
         require(token.transfer(msg.sender, amount));
 
         // noted: this is unchecked to disallow underflow, as this is not objective of the exercise
-        unchecked{ 
+        unchecked {
             balanceOf[msg.sender] -= amount;
-         }
-
-        
+        }
     }
 }

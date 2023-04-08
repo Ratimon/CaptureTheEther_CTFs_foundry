@@ -8,11 +8,9 @@ import {DeployGuessTheSecretNumberScript} from "@script/lotteries/2_DeployGuessT
 import {GuessTheSecretNumberChallenge} from "@main/lotteries/GuessTheSecretNumber.sol";
 
 contract GuessTheSecretNumberTest is Test, DeployGuessTheSecretNumberScript {
-
     address public attacker = address(11);
 
     function setUp() public {
-
         vm.deal(attacker, 2 ether);
         vm.label(attacker, "Attacker");
 
@@ -24,8 +22,8 @@ contract GuessTheSecretNumberTest is Test, DeployGuessTheSecretNumberScript {
     function test_isSolved() public {
         vm.startPrank(attacker);
 
-        assertEq( guessthesecretnumberChallenge.isComplete(), false);
-        assertEq( address(guessthesecretnumberChallenge).balance, 1 ether);
+        assertEq(guessthesecretnumberChallenge.isComplete(), false);
+        assertEq(address(guessthesecretnumberChallenge).balance, 1 ether);
 
         bytes32 secret = vm.load(address(guessthesecretnumberChallenge), 0);
         uint8 length = 255;
@@ -35,10 +33,9 @@ contract GuessTheSecretNumberTest is Test, DeployGuessTheSecretNumberScript {
         }
         guessthesecretnumberChallenge.guess{value: 1 ether}(answer);
         console.log("answer", answer);
-        assertEq( guessthesecretnumberChallenge.isComplete(), true);
-        assertEq( address(guessthesecretnumberChallenge).balance, 0 ether);
-       
-        vm.stopPrank(  );
-    }
+        assertEq(guessthesecretnumberChallenge.isComplete(), true);
+        assertEq(address(guessthesecretnumberChallenge).balance, 0 ether);
 
+        vm.stopPrank();
+    }
 }

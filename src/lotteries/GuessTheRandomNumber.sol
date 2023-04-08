@@ -4,15 +4,9 @@ pragma solidity =0.8.19;
 contract GuessTheRandomNumberChallenge {
     uint8 answer;
 
-     constructor() payable {
+    constructor() payable {
         require(msg.value == 1 ether);
-        answer = uint8(
-            uint256(  
-                keccak256( abi.encodePacked(
-                    blockhash(block.number - 1), block.timestamp)
-                )
-            )
-        );    
+        answer = uint8(uint256(keccak256(abi.encodePacked(blockhash(block.number - 1), block.timestamp))));
     }
 
     function isComplete() public view returns (bool) {

@@ -5,7 +5,7 @@ contract RetirementFundChallenge {
     uint256 startBalance;
     address owner = msg.sender;
     address beneficiary;
-    uint256 expiration = block.timestamp +  365 days;
+    uint256 expiration = block.timestamp + 365 days;
 
     constructor(address player) payable {
         require(msg.value == 1 ether);
@@ -35,9 +35,9 @@ contract RetirementFundChallenge {
         uint256 withdrawn;
 
         // noted: this is unchecked to disallow underflow, as this is not objective of the exercise
-        unchecked{ 
+        unchecked {
             withdrawn = startBalance - address(this).balance;
-         }
+        }
 
         // an early withdrawal occurred
         require(withdrawn > 0);
