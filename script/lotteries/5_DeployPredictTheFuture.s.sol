@@ -21,8 +21,7 @@ contract DeployPredictTheFutureScript is Script {
         predictthefutureChallenge = new PredictTheFutureChallenge{value: 1 ether}();
         vm.stopBroadcast();
 
-        string memory mnemonic2 = "test test test test test test test test test test test junk";
-        uint256 attackerPrivateKey = vm.deriveKey(mnemonic2, "m/44'/60'/0'/0/", 2); //  address = 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC
+        uint256 attackerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 2); //  address = 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC
 
         vm.startBroadcast(attackerPrivateKey);
         solver = new PredictTheFutureSolver{value: 1 ether}(address(predictthefutureChallenge), 7);

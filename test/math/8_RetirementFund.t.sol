@@ -10,18 +10,23 @@ import {RetirementFundAttacker} from "@main/math/RetirementFundAttacker.sol";
 contract RetirementFundTest is Test, DeployRetirementFundScript {
     string mnemonic = "test test test test test test test test test test test junk";
 
+    uint256 deployerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 1); //  address = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
+    address deployer = vm.addr(deployerPrivateKey);
+
     uint256 attackerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 2); //  address = 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC
     address attacker = vm.addr(attackerPrivateKey);
 
     RetirementFundAttacker retirementfundAttacker;
 
     function setUp() public {
-        vm.deal(attacker, 2 ether);
+
+        vm.label(deployer, "Deployer");
         vm.label(attacker, "Attacker");
 
-        retirementfundChallenge = new RetirementFundChallenge{value: 1 ether}(attacker);
-        // comment out due to in-abillity to deploy with sent ether
-        // DeployRetirementFundScript.run();
+        vm.deal(deployer, 1 ether);
+        vm.deal(attacker, 2 ether);
+
+        DeployRetirementFundScript.run();
     }
 
     function test_isSolved() public {

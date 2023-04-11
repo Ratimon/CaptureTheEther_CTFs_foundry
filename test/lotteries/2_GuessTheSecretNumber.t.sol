@@ -8,15 +8,19 @@ import {DeployGuessTheSecretNumberScript} from "@script/lotteries/2_DeployGuessT
 import {GuessTheSecretNumberChallenge} from "@main/lotteries/GuessTheSecretNumber.sol";
 
 contract GuessTheSecretNumberTest is Test, DeployGuessTheSecretNumberScript {
+    string mnemonic ="test test test test test test test test test test test junk";
+    uint256 deployerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 1); //  address = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
+    address deployer = vm.addr(deployerPrivateKey);
     address public attacker = address(11);
 
     function setUp() public {
-        vm.deal(attacker, 2 ether);
+        vm.label(deployer, "Deployer");
         vm.label(attacker, "Attacker");
 
-        guessthesecretnumberChallenge = new GuessTheSecretNumberChallenge{value: 1 ether}();
-        // comment out due to in-abillity to deploy with sent ether
-        // DeployGuessTheSecretNumberScript.run();
+        vm.deal(deployer, 1 ether);
+        vm.deal(attacker, 2 ether);
+
+        DeployGuessTheSecretNumberScript.run();
     }
 
     function test_isSolved() public {
