@@ -18,7 +18,7 @@ contract GuessTheNumberTest is Test, DeployGuessTheNumberScript {
         vm.label(attacker, "Attacker");
 
         vm.deal(deployer, 1 ether);
-        vm.deal(attacker, 2 ether);
+        vm.deal(attacker, 1 ether);
 
         DeployGuessTheNumberScript.run();
     }
