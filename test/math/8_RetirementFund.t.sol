@@ -19,7 +19,6 @@ contract RetirementFundTest is Test, DeployRetirementFundScript {
     RetirementFundAttacker retirementfundAttacker;
 
     function setUp() public {
-
         vm.label(deployer, "Deployer");
         vm.label(attacker, "Attacker");
 
