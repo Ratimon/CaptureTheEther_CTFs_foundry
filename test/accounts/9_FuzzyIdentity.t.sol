@@ -13,7 +13,11 @@ contract FuzzyIdentityTest is Test, DeployFuzzyIdentityScript {
     string mnemonic = "test test test test test test test test test test test junk";
     uint256 deployerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 1); //  address = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
     address deployer = vm.addr(deployerPrivateKey);
-    address public attacker = address(11);
+
+    uint256 attackerPrivateKey = vm.envUint("PRIVATE_KEY_9");
+    address public attacker = vm.addr(attackerPrivateKey);
+
+    FuzzyIdentityAttacker fuzzyIdentityAttacker;
 
     function setUp() public {
         vm.label(deployer, "Deployer");
@@ -30,7 +34,14 @@ contract FuzzyIdentityTest is Test, DeployFuzzyIdentityScript {
 
         assertEq(fuzzyIdentityChallenge.isComplete(), false);
 
+        // run script to brute forceå
+        fuzzyIdentityAttacker = new FuzzyIdentityAttacker();
+        console.log('attacker address is ', attacker);
+        console.log('contract address is ', address(fuzzyIdentityAttacker));
 
+        // vm.setNonce(attacker, 0);
+        fuzzyIdentityAttacker.attack(address(fuzzyIdentityChallenge));
+        assertTrue(fuzzyIdentityChallenge.isComplete(), "Challenge is not complete");
 
         // // EvmError: MemoryLimitOOG
         // uint256 i;
@@ -55,7 +66,7 @@ contract FuzzyIdentityTest is Test, DeployFuzzyIdentityScript {
         // }
 
 
-        assertTrue(fuzzyIdentityChallenge.isComplete(), "Challenge is not complete");
+       
 
         vm.stopPrank();
     }

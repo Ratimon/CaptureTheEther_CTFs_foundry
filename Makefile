@@ -80,6 +80,9 @@ anvil-node-auto:
 9-deploy:
 	forge script DeployFuzzyIdentityScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
+9-solve-fuzzyIdentity:
+	yarn hardhat run scripts-hardhat/9_SolveFuzzyIdentity.ts
+
 9-unit:
 	forge test --match-path test/accounts/9_FuzzyIdentity.t.sol -vvvvv --ffi
 
