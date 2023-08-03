@@ -77,6 +77,8 @@ anvil-node-auto:
 8-unit:
 	forge test --match-path test/math/8_RetirementFund.t.sol -vvv --ffi
 
+9-deploy:
+	forge script DeployFuzzyIdentityScript --rpc-url $(call local_network,8545)  -vvvv --broadcast; \
 
 9-unit:
 	forge test --match-path test/accounts/9_FuzzyIdentity.t.sol -vvv --ffi
