@@ -2,7 +2,7 @@
 pragma solidity =0.8.19;
 
 import {Script} from "@forge-std/Script.sol";
-import {FuzzyIdentityChallenge} from "@main/accounts/9_FuzzyIdentity.sol";
+import {FuzzyIdentityChallenge} from "@main/accounts/FuzzyIdentity.sol";
 
 contract DeployFuzzyIdentityScript is Script {
     FuzzyIdentityChallenge fuzzyIdentityChallenge;
