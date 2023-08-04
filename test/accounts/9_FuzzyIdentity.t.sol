@@ -14,6 +14,10 @@ contract FuzzyIdentityTest is Test, DeployFuzzyIdentityScript {
     uint256 deployerPrivateKey = vm.deriveKey(mnemonic, "m/44'/60'/0'/0/", 1); //  address = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
     address deployer = vm.addr(deployerPrivateKey);
 
+    // run script to brute force
+    // `cd scripts-python`
+    // `poetry run python scripts-python/badcode.py`
+
     uint256 attackerPrivateKey = vm.envUint("PRIVATE_KEY_9");
     address public attacker = vm.addr(attackerPrivateKey);
 
@@ -34,7 +38,6 @@ contract FuzzyIdentityTest is Test, DeployFuzzyIdentityScript {
 
         assertEq(fuzzyIdentityChallenge.isComplete(), false);
 
-        // run script to brute forceå
         fuzzyIdentityAttacker = new FuzzyIdentityAttacker();
         console.log('attacker address is ', attacker);
         console.log('contract address is ', address(fuzzyIdentityAttacker));
@@ -46,7 +49,6 @@ contract FuzzyIdentityTest is Test, DeployFuzzyIdentityScript {
         // // EvmError: MemoryLimitOOG
         // uint256 i;
         // while (!fuzzyIdentityChallenge.isComplete()) {
-
 
         //     bytes32 salt = bytes32(i);
         //     address attackerAddr = Create2.deploy(0, salt, vm.getCode("FuzzyIdentityAttacker.sol:FuzzyIdentityAttacker"));
@@ -64,9 +66,6 @@ contract FuzzyIdentityTest is Test, DeployFuzzyIdentityScript {
             
         //     i++;
         // }
-
-
-       
 
         vm.stopPrank();
     }

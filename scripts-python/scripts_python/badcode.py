@@ -10,6 +10,7 @@ while True:
     # generate a random private key
     private_key = os.urandom(32)
     addr = privtoaddr(private_key)
+    # nonce = 0
     contract_addr = encode_hex(mk_contract_address(addr, 0))
 
     if pattern.search(contract_addr):
