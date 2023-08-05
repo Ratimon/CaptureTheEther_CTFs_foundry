@@ -39,8 +39,8 @@ contract FuzzyIdentityTest is Test, DeployFuzzyIdentityScript {
         assertEq(fuzzyIdentityChallenge.isComplete(), false);
 
         fuzzyIdentityAttacker = new FuzzyIdentityAttacker();
-        console.log('attacker address is ', attacker);
-        console.log('contract address is ', address(fuzzyIdentityAttacker));
+        console.log("attacker address is ", attacker);
+        console.log("contract address is ", address(fuzzyIdentityAttacker));
 
         // vm.setNonce(attacker, 0);
         fuzzyIdentityAttacker.attack(address(fuzzyIdentityChallenge));
@@ -63,7 +63,7 @@ contract FuzzyIdentityTest is Test, DeployFuzzyIdentityScript {
         //     }
 
         //     console.log('keep finding!! the salt is',i);
-            
+
         //     i++;
         // }
 
