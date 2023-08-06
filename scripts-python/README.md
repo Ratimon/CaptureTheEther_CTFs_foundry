@@ -1,9 +1,10 @@
 ```sh
+cd scripts-python
 poetry install
 ```
 
 ```sh
-poetry run python scripts-python/badcode.py
+poetry run python scripts_python/9_FuzzyIdentity_badcode.py
 ```
 we get:
 ```
