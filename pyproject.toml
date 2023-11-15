@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "scripts-python"
+name = "capturetheether-ctfs-foundry"
 version = "0.1.0"
 description = ""
 authors = ["Ratimon <ratixoxo@gmail.com>"]
 readme = "README.md"
-packages = [{include = "scripts_python"}]
+# packages = [{include = "capturetheether_ctfs_foundry"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

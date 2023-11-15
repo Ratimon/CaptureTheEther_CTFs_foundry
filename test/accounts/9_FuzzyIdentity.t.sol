@@ -15,8 +15,7 @@ contract FuzzyIdentityTest is Test, DeployFuzzyIdentityScript {
     address deployer = vm.addr(deployerPrivateKey);
 
     // run script to brute force
-    // `cd scripts-python`
-    // `poetry run python scripts-python/badcode.py`
+    // poetry run python scripts-python/9_FuzzyIdentity_badcode.py
 
     uint256 attackerPrivateKey = vm.envUint("PRIVATE_KEY_9");
     address public attacker = vm.addr(attackerPrivateKey);
